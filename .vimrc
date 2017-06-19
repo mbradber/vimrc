@@ -67,3 +67,6 @@ hi Search cterm=NONE ctermfg=yellow ctermbg=blue
 " check one time after 4s of inactivity in normal mode
 set autoread
 au CursorHold * checktime
+
+" change directory to the file being edited
+nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
