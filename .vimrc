@@ -47,6 +47,8 @@ let g:ctrlp_match_window = 'bottom,order:ttb'
 let g:ctrlp_switch_buffer = 0
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_switch_buffer = 'Et'
+let g:ctrlp_max_files = 0
+let g:ctrlp_match_window = 'results:50' " overcome limit imposed by max height
 
 " igore image files, build files, etc.
 " set wildignore+=*.bmp,*.jpg,*.png
@@ -56,7 +58,7 @@ let g:ctrlp_switch_buffer = 'Et'
 nnoremap <Leader>t :NERDTreeToggle<Enter>
 
 " airline
-let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#enabled = 1
 
 " I don't want a swap file
 set noswapfile
@@ -70,3 +72,5 @@ au CursorHold * checktime
 
 " change directory to the file being edited
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
+
+set pastetoggle=<leader>p
