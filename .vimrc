@@ -1,6 +1,22 @@
-:imap jk <Esc>
+set nocompatible              " be iMproved, required
+filetype off                  " required
 
-execute pathogen#infect()
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" color schemes
+Plugin 'flazz/vim-colorschemes'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+
+:imap jk <Esc>
 
 " leader is comma
 let mapleader=","
@@ -10,13 +26,18 @@ filetype plugin indent on
 
 syntax on
 
-colorscheme dracula
+" color scheme
+colorscheme nord
+"set guifont=Consolas:h10
+set guifont=DejaVu_Sans_Mono:h10:cANSI
 
 set tabstop=4 " number of visual spaces per tab
 set softtabstop=4 " number of spaces in tab when editing
 set shiftwidth=4
 set expandtab " tabs are spaces
-set autoindent
+set smarttab autoindent
+"set autoindent
+"set cindent
 
 " disable auto comment inserts on new lines
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
@@ -25,7 +46,7 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 set backspace=indent,eol,start
 
 set number " show line numbers
-set cursorline " highlight current line
+"set cursorline " highlight current line
 set wildmenu " visual autocomplete for command menu
 set showmatch " highlight matching braces
 set incsearch " search as characters are entered
@@ -34,13 +55,8 @@ set hlsearch "highlight matches
 " turn off search highlight
 nnoremap <leader><space> :nohlsearch<CR>
 
-" enable Ag (file search)
-"let g:ackprg = 'ag --nogroup --nocolor --column'
-" open ag.vim
-nnoremap <leader>a :Ag
-
-" CTRL-P fuzzy search
-set runtimepath^=~/.vim/bundle/ctrlp.vim
+" NERDTree 
+nnoremap <Leader>t :NERDTreeToggle<Enter>
 
 " CtrlP settings
 let g:ctrlp_match_window = 'bottom,order:ttb'
@@ -49,16 +65,6 @@ let g:ctrlp_working_path_mode = 0
 let g:ctrlp_switch_buffer = 'Et'
 let g:ctrlp_max_files = 0
 let g:ctrlp_match_window = 'results:50' " overcome limit imposed by max height
-
-" igore image files, build files, etc.
-" set wildignore+=*.bmp,*.jpg,*.png
-" set wildignore+=*.a,*.o
-
-" NERDTree
-nnoremap <Leader>t :NERDTreeToggle<Enter>
-
-" airline
-" let g:airline#extensions#tabline#enabled = 1
 
 " I don't want a swap file
 set noswapfile
@@ -74,3 +80,10 @@ au CursorHold * checktime
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 
 set pastetoggle=<leader>p
+
+set ttyscroll=0
+
+" hide gvim stuff
+set guioptions-=m  "menu bar
+set guioptions-=T  "toolbar
+set guioptions-=r  "scrollbar
